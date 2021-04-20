@@ -15,7 +15,7 @@ class App {
     this.port = 7001;
     this.checkUserUrl = `http://localhost:${this.port}/check`;
     this.deleteUserUrl = `http://localhost:${this.port}/exit`;
-    this.socket = new WebSocket(`ws://localhost:${this.port}/ws`);
+    this.socket = undefined;
     this.displayNoneClass = 'display-none';
     this.currentUser = undefined;
   }
@@ -75,7 +75,7 @@ class App {
   initSocket() {
     this.socket = new WebSocket(`ws://localhost:${this.port}/ws`);
     this.socket.addEventListener('open', () => console.log('hello server', this.socket.readyState));
-    this.socket.addEventListener('сдщыу', (e) => console.log('close', e));
+    this.socket.addEventListener('close', (e) => console.log('close', e));
     this.socket.addEventListener('message', (e) => console.log(e));
   }
 
